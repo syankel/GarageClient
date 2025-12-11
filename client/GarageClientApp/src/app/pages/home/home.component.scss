@@ -1,0 +1,241 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  direction: rtl;
+  background: linear-gradient(135deg, #e0f7ff 0%, #b3e5fc 100%);
+  border-radius: 8px;
+  min-height: 100vh;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #0277bd;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(2, 119, 189, 0.1);
+  }
+
+  h2 {
+    color: #01579b;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #0288d1;
+    padding-bottom: 10px;
+    font-weight: 600;
+  }
+
+  h3 {
+    color: #0277bd;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .alert {
+    padding: 12px 16px;
+    margin: 12px 0 0 0;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+
+    &.alert-error {
+      background-color: #ffebee;
+      color: #c62828;
+      border-left: 4px solid #c62828;
+    }
+
+    &.alert-success {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border-left: 4px solid #2e7d32;
+    }
+  }
+
+  .table-section {
+    margin-bottom: 40px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(2, 119, 189, 0.15);
+
+    table {
+      width: 100%;
+      margin-top: 15px;
+      border-collapse: collapse;
+
+      th {
+        background: linear-gradient(135deg, #0277bd 0%, #01579b 100%);
+        color: white;
+        font-weight: 700;
+        text-align: right;
+        padding: 14px 8px;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+      }
+
+      th.mat-column-phone {
+        width: 140px;
+        text-align: center;
+      }
+
+      td.mat-column-phone {
+        text-align: center;
+        font-family: monospace;
+        color: #0277bd;
+        direction: ltr;
+        unicode-bidi: bidi-override;
+        font-weight: 600;
+      }
+
+      .mat-column-name,
+      .mat-column-address,
+      .mat-column-city {
+        max-width: 240px;
+        min-width: 80px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 8px;
+        text-align: right;
+      }
+
+      .mat-column-address {
+        max-width: 320px;
+      }
+
+      td,
+      th {
+        padding: 8px 6px;
+      }
+
+      td {
+        padding: 12px 8px;
+        color: #333;
+        border-bottom: 1px solid #e0f2f1;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f0f8ff;
+      }
+
+      tr:hover {
+        background-color: #b3e5fc;
+        transition: background-color 0.2s ease;
+      }
+    }
+
+    .no-data {
+      text-align: center;
+      color: #01579b;
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    mat-spinner {
+      display: block;
+      margin: 20px auto;
+    }
+  }
+
+  .select-section {
+    background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(2, 119, 189, 0.12);
+    border-left: 5px solid #0277bd;
+    margin-bottom: 30px;
+
+    h3 {
+      color: #01579b;
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .full-width {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .selected-garages {
+    background: linear-gradient(135deg, #f0f4ff 0%, #e3f2fd 100%);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 2px solid #0277bd;
+    box-shadow: 0 2px 8px rgba(2, 119, 189, 0.1);
+
+    h3 {
+      color: #01579b;
+      margin-top: 0;
+    }
+
+    .garage-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .garage-item {
+      display: inline-block;
+      background: linear-gradient(135deg, #0277bd 0%, #01579b 100%);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(2, 119, 189, 0.3);
+    }
+  }
+
+  .add-button {
+    width: 100%;
+    padding: 12px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin-top: 10px;
+
+    &:disabled {
+      opacity: 0.6;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+
+    table {
+      font-size: 13px !important;
+    }
+
+    .mat-column-name,
+    .mat-column-address,
+    .mat-column-city {
+      max-width: 140px;
+      font-size: 13px;
+    }
+
+    .mat-column-phone {
+      width: 120px;
+    }
+
+    .garage-list {
+      flex-direction: column;
+    }
+
+    .garage-item {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

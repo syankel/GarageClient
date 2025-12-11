@@ -1,0 +1,71 @@
+<div class="container">
+  <h1>ניהול מוסכים</h1>
+
+  <div class="table-section" *ngIf="!isLoading && garages.length > 0">
+    <h2>מוסכים השמורים בטבלה</h2>
+    
+    <table mat-table [dataSource]="garages" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>שם המוסך</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef>עיר</th>
+        <td mat-cell *matCellDef="let element"> {{element.city || '-'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>כתובת</th>
+        <td mat-cell *matCellDef="let element"> {{element.address || '-'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>טלפון</th>
+        <td mat-cell *matCellDef="let element"> {{ formatPhone(element.phone) || '-' }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <div class="select-section">
+    <h2>בחירת מוסכים להוספה</h2>
+    
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>בחר מוסכים להוספה</mat-label>
+      <mat-select [(ngModel)]="selectedGarages" multiple>
+        <mat-option *ngFor="let garage of getUniqueGarages()" [value]="garage">
+          {{ garage.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="selected-garages" *ngIf="selectedGarages.length > 0">
+      <h3>מוסכים שנבחרו: {{ selectedGarages.length }}</h3>
+      <div class="garage-list">
+        <div *ngFor="let garage of selectedGarages" class="garage-item">
+          {{ garage.name }}
+        </div>
+      </div>
+    </div>
+
+    <button 
+      mat-raised-button 
+      color="primary" 
+      (click)="addGarages()"
+      [disabled]="selectedGarages.length === 0 || isAdding"
+      class="add-button">
+      <span *ngIf="!isAdding">הוסף מוסכים</span>
+      <span *ngIf="isAdding">...מוסיף</span>
+    </button>
+
+    <div *ngIf="errorMessage" class="alert alert-error" style="margin-top:12px;">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="successMessage" class="alert alert-success" style="margin-top:12px;">
+      {{ successMessage }}
+    </div>
+  </div>
+</div>
